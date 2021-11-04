@@ -1,7 +1,7 @@
 package Screens
 
 sealed class Routes(val route: String) {
-    object MainScreen : Routes("MainScreen")
+    object StartScreen : Routes("StartScreen")
     object PlayScreen : Routes("PlayScreen")
     object HighScores : Routes("HighScores")
     object SettingScreen : Routes("SettingScreen")

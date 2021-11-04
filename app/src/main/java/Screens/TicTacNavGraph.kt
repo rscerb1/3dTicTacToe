@@ -20,13 +20,16 @@ fun TicTacNavGraph (
     val VM: TicTacViewModel = viewModel()
     NavHost(
         navController = navController,
-        startDestination = Routes.MainScreen.route
+        startDestination = Routes.StartScreen.route
     ){
-        composable(Routes.MainScreen.route){
-            TicTacView()
+        composable(Routes.StartScreen.route){
+            TicTacView(navController)
         }
         composable(Routes.PlayScreen.route){
 
+        }
+        composable(Routes.HighScores.route){
+            HighScoreScreen()
         }
     }
 }

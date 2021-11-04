@@ -1,5 +1,6 @@
 package com.example.semesterproject
 
+import Screens.Routes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,12 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.intellij.lang.annotations.JdkConstants
 
 @ExperimentalFoundationApi
 @Composable
 
-fun TicTacView (){
+fun TicTacView (
+    navController: NavHostController = rememberNavController()
+){
 
     Row(
         modifier = Modifier.fillMaxHeight(),
@@ -31,13 +36,13 @@ fun TicTacView (){
         ) {
             Button(
                 modifier = Modifier.padding(16.dp).width(120.dp).height(60.dp),
-                onClick = { /*TODO*/ })
+                onClick = { navController.navigate((Routes.PlayScreen.route)) })
             {
                 Text(text = "Play")
             }
             Button(
                 modifier = Modifier.padding(16.dp).width(120.dp).height(60.dp),
-                onClick = { /*TODO*/ })
+                onClick = { navController.navigate(Routes.HighScores.route) })
             {
                 Text(text = "Highscores")
             }
