@@ -19,11 +19,7 @@ import org.intellij.lang.annotations.JdkConstants
 @Composable
 
 fun TicTacView (){
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center) {
-        Text(text = "3D Tic Tac Toe", fontSize = 32.sp)
-    }
+
     Row(
         modifier = Modifier.fillMaxHeight(),
         verticalAlignment = Alignment.CenterVertically
