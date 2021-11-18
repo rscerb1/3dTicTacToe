@@ -48,7 +48,7 @@ fun TicTacView (
             }
             Button(
                 modifier = Modifier.padding(16.dp).width(120.dp).height(60.dp),
-                onClick = { /*TODO*/ })
+                onClick = { navController.navigate(Routes.SettingScreen.route) })
             {
                 Text(text = "Settings")
             }

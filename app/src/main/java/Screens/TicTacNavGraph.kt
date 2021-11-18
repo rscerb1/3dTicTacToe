@@ -26,10 +26,13 @@ fun TicTacNavGraph (
             TicTacView(navController)
         }
         composable(Routes.PlayScreen.route){
-
+            Playscreen()
         }
         composable(Routes.HighScores.route){
             HighScoreScreen()
+        }
+        composable(Routes.SettingScreen.route){
+            SettingView()
         }
     }
 }

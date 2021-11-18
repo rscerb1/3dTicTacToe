@@ -23,7 +23,7 @@ fun MainScreen (){
     val nav = rememberNavController()
     Scaffold (
         topBar = {
-            TopBar()
+            // Text(text = "3D Tic Tac Toe")
         }
             ){
         TicTacNavGraph(nav)
