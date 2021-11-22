@@ -34,4 +34,5 @@ fun SettingView (){
             }
         )
     }
+    //TODO-add setting for dark/light mode
 }

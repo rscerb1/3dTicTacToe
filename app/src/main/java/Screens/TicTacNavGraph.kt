@@ -34,5 +34,6 @@ fun TicTacNavGraph (
         composable(Routes.SettingScreen.route){
             SettingView()
         }
+        //TODO-Add paths for game modes
     }
 }
