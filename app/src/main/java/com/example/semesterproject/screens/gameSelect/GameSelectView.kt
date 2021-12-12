@@ -1,61 +1,92 @@
 package com.example.semesterproject.screens.gameSelect
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.semesterproject.data.game.Game
 
+@ExperimentalFoundationApi
 @Composable
 fun GameSelectView(
     games: List<Game>,
-    addGame: (Game) -> Unit
+    addGame: (String) -> Unit
 ) {
-
-    Scaffold(floatingActionButton = { FloatingActionButton(onClick = { }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = null )
-            } }) { innerPadding ->
+    val opponent = remember { mutableStateOf(TextFieldValue()) }
+    
+    Scaffold() { innerPadding ->
         LazyColumn(contentPadding = innerPadding){
+            stickyHeader {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(5.dp)
+                        .background(color = Color.LightGray),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    TextField(
+                        value = opponent.value,
+                        onValueChange = { opponent.value = it },
+                        placeholder = {Text("Enter Opponent")},
+                        modifier = Modifier.width(300.dp)
+                    )
+                    Button(onClick = { addGame(opponent.value.text) }) {
+                        Text(text = "Create Game")
+                    }
+                }
+            }
+
             items(games) { game ->
-                GameCard(game)
+                GameRow(game)
             }
         }
     }
 }
 
+
 @Composable
-fun GameCard(game: Game){
+fun GameRow(game: Game){
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(14.dp)
+            .padding(8.dp)
     ){
-        Text("Game with: ${game.player1}")
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .width(320.dp)
+                .height(60.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray)
+        ){
+            Text("Game with: ${game.player1}")
+        }
     }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun PreGameCard(){
+fun PreGameRow(){
     val game = remember {
         Game("a","Bob","a","a","a")
     }
-    GameCard(game)
+    GameRow(game)
 }

@@ -16,6 +16,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GameSelectViewModel: ViewModel() {
+
+    // TODO: replace mainPlayer with whichever user is signed in
+    val mainPlayer = "reggie"
+
     var games by mutableStateOf(GameRepo.getGames())
 
     init {
@@ -25,13 +29,16 @@ class GameSelectViewModel: ViewModel() {
         }
     }
 
-    fun addGame(game: Game) {
-
+    fun addGame(opponent: String) {
+        CoroutineScope(IO).launch {
+            DataFetcher().postGame(mainPlayer, opponent)
+            games = DataFetcher().fetchGames()
+        }
     }
 
     private fun fetchGames() {
         CoroutineScope(IO).launch {
-            games = games + DataFetcher().fetchGames()
+            games = DataFetcher().fetchGames()
         }
         Log.i(TAG,"Called Coroutine")
     }
