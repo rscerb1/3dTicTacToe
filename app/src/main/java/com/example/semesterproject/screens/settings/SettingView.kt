@@ -1,4 +1,4 @@
-package Screens
+package com.example.semesterproject.screens
 
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button

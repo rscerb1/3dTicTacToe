@@ -1,22 +1,16 @@
-package Screens
+package com.example.semesterproject.screens.highScore
 
-import android.widget.TableLayout
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun HighScoreScreen() {
-    val ScoreList: List<HighScore>
-    ScoreList = (1..50).map { i ->
+    val ScoreList: List<HighScore> = (1..50).map { i ->
             HighScore(i, "Player $i", i * 2, i + 2)
     }
     val _ScoreList =  ScoreList.sortedByDescending { it.Wins }

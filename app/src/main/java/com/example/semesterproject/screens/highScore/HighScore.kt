@@ -1,4 +1,4 @@
-package Screens
+package com.example.semesterproject.screens.highScore
 
 data class HighScore(
     val Rank: Int,

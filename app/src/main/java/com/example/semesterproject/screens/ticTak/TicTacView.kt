@@ -1,26 +1,17 @@
-package com.example.semesterproject
+package com.example.semesterproject.screens.ticTak
 
-import Screens.Routes
-import androidx.compose.foundation.ExperimentalFoundationApi
+import com.example.semesterproject.navigation.Routes
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Button
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import org.intellij.lang.annotations.JdkConstants
 
-@ExperimentalFoundationApi
 @Composable
-
 fun TicTacView (
     navController: NavHostController = rememberNavController()
 ){
@@ -36,7 +27,7 @@ fun TicTacView (
         ) {
             Button(
                 modifier = Modifier.padding(16.dp).width(120.dp).height(60.dp),
-                onClick = { navController.navigate((Routes.PlayScreen.route)) })
+                onClick = { navController.navigate(Routes.GameSelect.route) })
             {
                 Text(text = "Play")
             }
@@ -56,3 +47,4 @@ fun TicTacView (
         }
     }
 }
+
