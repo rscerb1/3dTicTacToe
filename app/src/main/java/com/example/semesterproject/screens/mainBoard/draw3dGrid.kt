@@ -364,7 +364,7 @@ fun draw3dGrid(navController: NavHostController) {
             horizontalArrangement = Arrangement.Center
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),
                 modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dTop.route)}
@@ -379,7 +379,7 @@ fun draw3dGrid(navController: NavHostController) {
 
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),
                 border = BorderStroke(0.dp, Color.Transparent),
                 modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {

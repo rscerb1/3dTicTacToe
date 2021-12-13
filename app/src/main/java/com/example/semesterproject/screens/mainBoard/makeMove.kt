@@ -51,31 +51,45 @@ fun MakeMove() {
 
                 if (moveSelection == "11") {
 //                    Log.d("value of text is 11: ", moveSelection)
-
+                    updateBoardState[0] = moveSelection.toInt()
                 }
                 if (moveSelection =="12") {
 //                    Log.d("value of text is 12: ", moveSelection)
+                    updateBoardState[1] = moveSelection.toInt()
+
                 }
                 if (moveSelection =="13") {
 //                    Log.d("value of text is 13: ", moveSelection)
+                    updateBoardState[2] = moveSelection.toInt()
+
                 }
                 if (moveSelection =="21") {
 //                    Log.d("value of text is 21: ", moveSelection)
+                    updateBoardState[3] = moveSelection.toInt()
+
                 }
                 if (moveSelection =="22") {
 //                    Log.d("value of text is 22: ", moveSelection)
+                    updateBoardState[4] = moveSelection.toInt()
+
                 }
                 if (moveSelection =="23") {
 //                    Log.d("value of text is 23: ", moveSelection)
+                    updateBoardState[5] = moveSelection.toInt()
                 }
                 if (moveSelection =="31") {
 //                    Log.d("value of text is 31: ", moveSelection)
+                    updateBoardState[6] = moveSelection.toInt()
                 }
                 if (moveSelection =="32") {
 //                    Log.d("value of text is 32: ", moveSelection)
+                    updateBoardState[7] = moveSelection.toInt()
+
                 }
                 if (moveSelection =="33") {
 //                    Log.d("value of text is 33: ", moveSelection)
+                    updateBoardState[8] = moveSelection.toInt()
+
                 }
             }) {
                 Text("Confirm Move")
