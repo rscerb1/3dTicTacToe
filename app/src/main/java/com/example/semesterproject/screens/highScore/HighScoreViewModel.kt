@@ -1,6 +1,6 @@
 package com.example.semesterproject.screens.highScore
 
-data class HighScore(
+data class HighScoreViewModel(
     val Rank: Int,
     val Name: String,
     val Wins: Int,
