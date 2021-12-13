@@ -21,6 +21,9 @@ var firstBoardState =
         0, 0, 0,
         1, 1, 1)
 
+var updateBoardState = firstBoardState.toMutableList()
+
+
 @ExperimentalComposeApi
 @Composable
 fun load3dBoard(navController: NavHostController) {
