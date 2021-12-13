@@ -57,6 +57,7 @@ fun load2dBoardTop(navController: NavHostController = rememberNavController()) {
     var cordList = listOf(cordpair)
 
     draw2dGrid(cordList)
+    MakeMove()
 
     var firstState= firstBoardState
     firstState = firstState.slice(0..8)
@@ -84,6 +85,7 @@ fun load2dBoardMiddle(navController: NavHostController = rememberNavController()
     var cordList = listOf(cordpair)
 
     draw2dGrid(cordList)
+    MakeMove()
 
     var firstState= firstBoardState
     firstState = firstState.slice(9..17)
@@ -111,6 +113,7 @@ fun load2dBoardBottom(navController: NavHostController = rememberNavController()
     var cordList = listOf(cordpair)
 
     draw2dGrid(cordList)
+    MakeMove()
 
     var firstState= firstBoardState
     firstState = firstState.slice(18..26)

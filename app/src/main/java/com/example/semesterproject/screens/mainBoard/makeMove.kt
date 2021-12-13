@@ -1,5 +1,6 @@
 package com.example.semesterproject.screens.mainBoard
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,11 +50,11 @@ fun MakeMove() {
                 text = ""
 
                 if (moveSelection == "11") {
-//                    Log.d("value of text is 11: ", moveSelection)
+                    Log.d("value of text is 11: ", moveSelection)
 
                 }
                 if (moveSelection =="12") {
-//                    Log.d("value of text is 12: ", moveSelection)
+                    Log.d("value of text is 12: ", moveSelection)
                 }
                 if (moveSelection =="13") {
 //                    Log.d("value of text is 13: ", moveSelection)
