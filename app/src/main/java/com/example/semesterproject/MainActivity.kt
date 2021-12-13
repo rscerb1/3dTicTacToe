@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent(){
             Surface{
-                MainScreen()
+                TicTacTheme() {
+                    MainScreen()
+                }
             }
         }
     }
