@@ -114,7 +114,7 @@ fun draw2dGrid(cordList: List<CordPair>) {
         cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
 
         drawCircle(
-            color = Color.Black,
+            color = Color.Unspecified,
             center = Offset(
                 x = (((canvasWidth - 1000) + (canvasWidth-100-canvasWidth/1.8))/2).toFloat(),
                 y = (((canvasHeight - 1300) + (canvasHeight - 400 - canvasHeight/2.8))/2).toFloat()),
@@ -133,7 +133,7 @@ fun draw2dGrid(cordList: List<CordPair>) {
                 currentX += 300f
             }
             drawCircle(
-                color = Color.Black,
+                color = Color.Unspecified,
                 center = Offset(x = currentX, y = currentY),
                 radius = 10f
             )

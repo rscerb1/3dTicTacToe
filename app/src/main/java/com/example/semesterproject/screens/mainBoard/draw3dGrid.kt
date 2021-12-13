@@ -241,7 +241,7 @@ fun draw3dGrid(navController: NavHostController) {
 
         // Top Grid
         drawCircle(
-            color = Color.Black,
+            color = Color.Unspecified,
             center = Offset(x = currentX, y = currentY),
             radius = 10f
         )
@@ -267,7 +267,7 @@ fun draw3dGrid(navController: NavHostController) {
                 currentX += 175f
             }
             drawCircle(
-                color = Color.Black,
+                color = Color.Unspecified,
                 center = Offset(x = currentX, y = currentY),
                 radius = 10f
 
@@ -282,7 +282,7 @@ fun draw3dGrid(navController: NavHostController) {
         currentY = (canvasHeight - 850f)
 
         drawCircle(
-            color = Color.Black,
+            color = Color.Unspecified,
             center = Offset(x = currentX, y = currentY),
             radius = 10f
         )
@@ -301,7 +301,7 @@ fun draw3dGrid(navController: NavHostController) {
                 currentX += 175f
             }
             drawCircle(
-                color = Color.Black,
+                color = Color.Unspecified,
                 center = Offset(x = currentX, y = currentY),
                 radius = 10f
             )
@@ -316,7 +316,7 @@ fun draw3dGrid(navController: NavHostController) {
         currentY = (canvasHeight - 350f)
 
         drawCircle(
-            color = Color.Black,
+            color = Color.Unspecified,
             center = Offset(x = currentX, y = currentY),
             radius = 10f
         )
@@ -337,7 +337,7 @@ fun draw3dGrid(navController: NavHostController) {
             }
 
             drawCircle(
-                color = Color.Black,
+                color = Color.Unspecified,
                 center = Offset(x = currentX, y = currentY),
                 radius = 10f
             )
@@ -364,7 +364,7 @@ fun draw3dGrid(navController: NavHostController) {
             horizontalArrangement = Arrangement.Center
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),
                 modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dTop.route)}
@@ -379,7 +379,7 @@ fun draw3dGrid(navController: NavHostController) {
 
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),
                 border = BorderStroke(0.dp, Color.Transparent),
                 modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
@@ -395,7 +395,7 @@ fun draw3dGrid(navController: NavHostController) {
             verticalAlignment = Alignment.Bottom
         ) {
             Button(
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),
                 modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dBottom.route)}
