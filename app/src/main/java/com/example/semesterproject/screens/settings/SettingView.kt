@@ -15,13 +15,13 @@ fun SettingView (){
             openAlert.value = true;
         }
     ) {
-        Text(text = "Delete Local High Scores")
+        Text(text = "Delete My High Scores")
     }
     if(openAlert.value){
         AlertDialog(
             onDismissRequest = { openAlert.value = false },
             title = { Text(text = "Alert Dialog")},
-            text = { Text(text = "Are you sure you want to permanently delete the local scores?")},
+            text = { Text(text = "Are you sure you want to permanently delete your scores?")},
             confirmButton = {
                 Button(onClick = { openAlert.value = false }) {
                     Text(text = "Confirm") }

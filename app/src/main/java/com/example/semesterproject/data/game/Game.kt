@@ -2,7 +2,7 @@ package com.example.semesterproject.data.game;
 
 import androidx.room.Entity;
 
-@Entity(primaryKeys = ["user1", "user2"], tableName = "GAME_DATA")
+@Entity(primaryKeys = ["player0", "player1"], tableName = "GAME_DATA")
 data class Game(
     val player0: String,
     val player1: String,
