@@ -34,27 +34,36 @@ class DataFetcher() {
         val jsonBody = gson.toJson(gameData)
         val json = jsonBody.toRequestBody("application/json".toMediaTypeOrNull())
         val request = Request.Builder()
-            .url("http://10.0.5.152:5000/games")
+            .url("69.250.96.168:5555/games")
             .post(json)
             .build()
         Log.i("POST Response", client.newCall(request).execute().toString())
     }
 
 
-    fun fetchGames(): List<Game> {
-        val request = Request.Builder()
-                .url("http://10.0.5.152:5000/games")
+    suspend fun fetchGames(): List<Game> {
+        return withContext(Dispatchers.IO) {
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("http://69.250.96.168:5555/games")
                 .get()
                 .build()
-        val response = client.newCall(request).execute()
-        val json = response.body?.string()
-        return if (json != null) {
-            val gson = Gson()
-            val listTypeToken = object : TypeToken<List<Game>>() {}
-            val listType = listTypeToken.type
-            Log.i(ContentValues.TAG,"Loaded Data from API")
-            gson.fromJson(json, listType)
-        } else { listOf() }
+            val response = client.newCall(request).execute()
+            val json = response.body?.string()
+             if (json != null) {
+                val gson = Gson()
+                val listTypeToken = object : TypeToken<List<Game>>() {}
+                val listType = listTypeToken.type
+                Log.i(ContentValues.TAG, "Loaded Data from API")
+                gson.fromJson(json, listType)
+            } else {
+                listOf()
+            }
+        }
+    }
+
+    fun fetchUser():User{
+        TODO()
     }
 
 
