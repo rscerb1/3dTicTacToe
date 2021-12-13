@@ -27,14 +27,13 @@ class DataFetcher() {
 
     private val client = OkHttpClient()
 
-
     fun postGame(player0: String, player1: String) {
         val gameData = newGameData(player0, player1)
         val gson = Gson()
         val jsonBody = gson.toJson(gameData)
         val json = jsonBody.toRequestBody("application/json".toMediaTypeOrNull())
         val request = Request.Builder()
-            .url("http://10.0.5.152:5000/games")
+            .url("http://69.250.96.168:5555/games")
             .post(json)
             .build()
         Log.i("POST Response", client.newCall(request).execute().toString())
@@ -43,7 +42,7 @@ class DataFetcher() {
 
     fun fetchGames(): List<Game> {
         val request = Request.Builder()
-                .url("http://10.0.5.152:5000/games")
+                .url("http://69.250.96.168:5555/games")
                 .get()
                 .build()
         val response = client.newCall(request).execute()

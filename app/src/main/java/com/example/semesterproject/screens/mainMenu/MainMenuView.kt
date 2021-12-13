@@ -1,4 +1,4 @@
-package com.example.semesterproject.screens.ticTak
+package com.example.semesterproject.screens.mainMenu
 
 import com.example.semesterproject.navigation.Routes
 import androidx.compose.foundation.layout.*
@@ -12,9 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun TicTacView (
-    navController: NavHostController = rememberNavController()
-){
+fun MainMenuView (navController: NavHostController = rememberNavController()){
 
     Row(
         modifier = Modifier.fillMaxHeight(),

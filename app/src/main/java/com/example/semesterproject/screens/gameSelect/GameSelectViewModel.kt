@@ -31,8 +31,12 @@ class GameSelectViewModel: ViewModel() {
 
     fun addGame(opponent: String) {
         CoroutineScope(IO).launch {
-            DataFetcher().postGame(mainPlayer, opponent)
-            games = DataFetcher().fetchGames()
+            games = try {
+                DataFetcher().postGame(mainPlayer, opponent)
+                DataFetcher().fetchGames()
+            } catch (er: Error){
+                listOf()
+            }
         }
     }
 
