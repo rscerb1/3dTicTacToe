@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 
 @Composable
-fun TextField() {
+fun MakeMove() {
 
     var text by rememberSaveable { mutableStateOf("") }
     var moveSelection: String = "0"
@@ -46,6 +46,7 @@ fun TextField() {
             Button(onClick = {
 
                 moveSelection = text
+                text = ""
 
                 if (moveSelection == "11") {
 //                    Log.d("value of text is 11: ", moveSelection)

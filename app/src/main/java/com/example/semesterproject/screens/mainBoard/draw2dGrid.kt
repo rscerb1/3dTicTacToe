@@ -167,9 +167,16 @@ fun draw2dGrid() {
 @Composable
 fun draw2dO() {
     Canvas(modifier = Modifier.fillMaxSize()) {
+
+        val canvasSize = size
+        val canvasWidth = size.width
+        val canvasHeight = size.height
+        var startingX = (((canvasWidth - 1000) + (canvasWidth-100-canvasWidth/1.8))/2).toFloat()
+        var startingY = (((canvasHeight - 1300) + (canvasHeight - 400 - canvasHeight/2.8))/2).toFloat()
+
         drawCircle(
             color = Color.Black,
-            center = Offset(230f, 871f),
+            center = Offset(startingX, startingY),
             radius = 90f,
             style = Stroke(width = size.width * 0.01f)
         )

@@ -248,7 +248,7 @@ fun draw3dGrid() {
         cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
 
         Log.d("Tag", cordList.toString())
-        Log.d("# of elements in cordpair", cordList.size.toString())
+        Log.d("# elements in cordpair", cordList.size.toString())
 
         for (i in 1..8) {
 

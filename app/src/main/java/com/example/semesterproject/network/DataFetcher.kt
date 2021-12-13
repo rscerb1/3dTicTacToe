@@ -45,7 +45,7 @@ class DataFetcher() {
         return withContext(Dispatchers.IO) {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("http://69.250.96.168:5555/games%22")
+                .url("http://69.250.96.168:5555/games")
                     .get()
                     .build()
                     val response = client.newCall(request).execute()
