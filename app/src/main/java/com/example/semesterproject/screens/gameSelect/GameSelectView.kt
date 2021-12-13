@@ -16,11 +16,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.semesterproject.data.game.Game
+import com.example.semesterproject.navigation.Routes
 
 @ExperimentalFoundationApi
 @Composable
 fun GameSelectView(
+    nav: NavHostController = rememberNavController(),
     games: List<Game>,
     setOpp: (String) -> Unit,
     addGame: () -> Unit,
@@ -55,14 +59,14 @@ fun GameSelectView(
             }
 
             items(games) { game ->
-                GameRow(game, mainUser)
+                GameRow(game, mainUser, nav)
             }
         }
     }
 }
 
 @Composable
-fun GameRow(game: Game, mainUser: String){
+fun GameRow(game: Game, mainUser: String,nav: NavHostController){
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
@@ -71,7 +75,9 @@ fun GameRow(game: Game, mainUser: String){
             .padding(8.dp)
     ) {
         Button(
-            onClick = {},
+            onClick = {
+                nav.navigate(Routes.Board3d.route)
+            },
             modifier = Modifier
                 .width(320.dp)
                 .height(60.dp),

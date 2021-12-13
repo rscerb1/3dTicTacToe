@@ -15,6 +15,10 @@ import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
 import com.example.semesterproject.screens.login.LoginViewModel
+import com.example.semesterproject.screens.mainBoard.load2dBoardBottom
+import com.example.semesterproject.screens.mainBoard.load2dBoardMiddle
+import com.example.semesterproject.screens.mainBoard.load2dBoardTop
+import com.example.semesterproject.screens.mainBoard.load3dBoard
 import com.example.semesterproject.screens.mainMenu.MainMenuView
 
 @ExperimentalComposeApi
@@ -50,11 +54,24 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
         composable(Routes.GameSelect.route){
             gvm.setMainUser(loginVm.mainUser)
             GameSelectView(
+                navController,
                 gvm.games,
                 setOpp = {gvm.setOpp(it)},
                 addGame = {gvm.addGame()},
                 loginVm.mainUser
             )
+        }
+        composable(Routes.Board3d.route) {
+            load3dBoard(navController)
+        }
+        composable(Routes.Board2dTop.route) {
+            load2dBoardTop()
+        }
+        composable(Routes.Board2dMiddle.route) {
+            load2dBoardMiddle()
+        }
+        composable(Routes.Board2dBottom.route) {
+            load2dBoardBottom()
         }
 
         //TODO-Add paths for game modes
