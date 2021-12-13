@@ -10,6 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.semesterproject.data.game.Game
 import com.example.semesterproject.screens.login.AccountView
 import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
@@ -29,6 +30,7 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
 
     val gvm: GameSelectViewModel = viewModel()
     val loginVm: LoginViewModel = viewModel()
+    var game: Game
 
     NavHost(
         navController = navController,
@@ -62,7 +64,10 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
             )
         }
         composable(Routes.Board3d.route) {
-            load3dBoard(navController)
+            load3dBoard(
+                navController,
+                gvm.getGame(loginVm.mainUser, gvm.opponent)
+            )
         }
         composable(Routes.Board2dTop.route) {
             load2dBoardTop()

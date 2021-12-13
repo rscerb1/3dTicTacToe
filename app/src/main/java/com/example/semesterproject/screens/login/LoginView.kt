@@ -43,12 +43,12 @@ fun AccountView(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxWidth()
-            ){
-                Text(text = "Login", fontSize =20.sp)
+            ) {
+                Text(text = "Login", fontSize = 20.sp)
                 val username = remember { mutableStateOf(TextFieldValue()) }
                 TextField(
                     value = username.value,
-                    onValueChange = {username.value = it},
+                    onValueChange = { username.value = it },
                     placeholder = { Text(text = "Username") },
                     modifier = Modifier.padding(10.dp)
                 )
@@ -56,19 +56,35 @@ fun AccountView(
                 val pass = remember { mutableStateOf(TextFieldValue()) }
                 TextField(
                     value = pass.value,
-                    onValueChange = {pass.value = it},
+                    onValueChange = { pass.value = it },
                     placeholder = { Text(text = "Password") },
                     modifier = Modifier.padding(10.dp)
                 )
-
+                val openLoginDialog = remember { mutableStateOf(false) }
                 Button(
                     onClick = {
-                        signIn(username.value.text)
-                        navController.navigate(Routes.MainMenu.route)
-                              },
+                        if (username.value.text != "") {
+                            signIn(username.value.text)
+                            navController.navigate(Routes.MainMenu.route)
+                        } else {
+                            openLoginDialog.value = true
+                        }
+                    },
                     modifier = Modifier.padding(10.dp)
                 ) {
                     Text(text = "Login")
+                }
+                if (openLoginDialog.value) {
+                    AlertDialog(
+                        onDismissRequest = { openLoginDialog.value = false },
+                        title = { Text("Could not login.") },
+                        confirmButton = {
+                            Button(
+                                onClick = { openLoginDialog.value = false }) {
+                                Text("Close")
+                            }
+                        }
+                    )
                 }
             }
         }
@@ -109,11 +125,17 @@ fun AccountView(
                     modifier = Modifier.padding(10.dp)
                 )
 
-                val openDialog = remember { mutableStateOf(false)  }
-                var message = remember { mutableStateOf("")}
+                val openDialog = remember { mutableStateOf(false) }
+                var message = remember { mutableStateOf("") }
                 Button(
                     onClick = {
-                        if (
+                        if (username.value.text == ""
+                            || pass.value.text == ""
+                            || passConfirm.value.text == ""
+                        ) {
+                            message.value = "Please make sure the fields are filled in."
+                            openDialog.value = true
+                        } else if (
                             pass.value.text == passConfirm.value.text
                             && pass.value.text != ""
                         ) {
@@ -132,7 +154,7 @@ fun AccountView(
                 if (openDialog.value) {
                     AlertDialog(
                         onDismissRequest = { openDialog.value = false },
-                        title = { Text(message.value)},
+                        title = { Text(message.value) },
                         confirmButton = {
                             Button(
                                 onClick = { openDialog.value = false }) {

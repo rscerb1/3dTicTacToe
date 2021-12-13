@@ -7,8 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
-var firstBoardState =
-    listOf(
+var firstBoardState = listOf(
         1, 1, 1,
         0, 0, 0,
         2, 2, 2,
@@ -23,10 +22,17 @@ var firstBoardState =
 
 @ExperimentalComposeApi
 @Composable
-fun load3dBoard(navController: NavHostController) {
+fun load3dBoard(
+    navController: NavHostController,
+    board: String
+) {
+
+
 
     var cordpair = CordPair(0f, 0f)
     var cordList = listOf(cordpair)
+
+
 
     draw3dGrid(navController)
 

@@ -46,4 +46,14 @@ class GameSelectViewModel(app:Application): AndroidViewModel(app) {
         }
     }
 
+    fun getGame(mainUser: String, opponent: String): String{
+        for(i in games){
+            if((i.player0 == mainUser && i.player1 == opponent)
+                || i.player1 == mainUser && i.player0 == opponent){
+                return i.board
+            }
+        }
+        return ""
+    }
+
 }
