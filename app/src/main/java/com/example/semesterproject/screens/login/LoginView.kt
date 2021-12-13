@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -109,19 +108,52 @@ fun AccountView(
                     modifier = Modifier.padding(10.dp)
                 )
 
+                val openDialog = remember { mutableStateOf(false)  }
+                var message = remember { mutableStateOf("")}
                 Button(
                     onClick = {
-                        if (pass.value.text == passConfirm.value.text) {
-                            vm.addUser(username.value.text, pass.value.text)
+                        if (
+                            pass.value.text == passConfirm.value.text
+                            && pass.value.text != ""
+                        ) {
+                            if(vm.addUser(username.value.text, passConfirm.value.text)) {
+                                username.value = TextFieldValue("")
+                                pass.value = TextFieldValue("")
+                                passConfirm.value = TextFieldValue("")
+                                message.value = "Account Created! You can now login and start playing!"
+                                openDialog.value = true
+                            }
+                            else{
+                                pass.value = TextFieldValue("")
+                                passConfirm.value = TextFieldValue("")
+                                message.value = "This username is invalid or already in use."
+                                openDialog.value = true
+                            }
+                        }
+                        else{
+                            pass.value = TextFieldValue("")
+                            passConfirm.value = TextFieldValue("")
+                            message.value = "Errors in one of the fields."
+                            openDialog.value = true
                         }
                     },
                     modifier = Modifier.padding(10.dp)
                 ) {
                     Text(text = "Submit")
                 }
+                if (openDialog.value) {
+                    AlertDialog(
+                        onDismissRequest = { openDialog.value = false },
+                        title = { Text(message.value)},
+                        confirmButton = {
+                            Button(
+                                onClick = { openDialog.value = false }) {
+                                Text("Close")
+                            }
+                        }
+                    )
+                }
             }
         }
     }
 }
-
-
