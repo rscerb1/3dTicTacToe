@@ -103,6 +103,7 @@ class DataFetcher() {
                 }
             })
         }
+        Log.i("fetchGames", games.toString())
         return games
     }
 
@@ -126,5 +127,6 @@ class DataFetcher() {
         }
     }
 
+    fun fetchUser(){}
 
 }
