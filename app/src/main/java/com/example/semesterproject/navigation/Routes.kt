@@ -6,6 +6,7 @@ sealed class Routes(val route: String) {
     object SettingScreen : Routes("SettingScreen")
     object GameSelect : Routes("GameSelect")
     object Login: Routes("Login")
-    object Game3d: Routes("Game3d")
-    object Game2d: Routes("Game2d")
+
+
+    //TODO-add routes for game modes
 }
