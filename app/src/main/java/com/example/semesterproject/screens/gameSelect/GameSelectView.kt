@@ -23,7 +23,8 @@ import com.example.semesterproject.data.game.Game
 fun GameSelectView(
     games: List<Game>,
     setOpp: (String) -> Unit,
-    addGame: () -> Unit
+    addGame: () -> Unit,
+    mainUser: String
 ) {
     val opponent = remember { mutableStateOf(TextFieldValue()) }
     
@@ -54,29 +55,36 @@ fun GameSelectView(
             }
 
             items(games) { game ->
-                GameRow(game)
+                GameRow(game, mainUser)
             }
         }
     }
 }
 
 @Composable
-fun GameRow(game: Game){
+fun GameRow(game: Game, mainUser: String){
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-    ){
+    ) {
         Button(
             onClick = {},
             modifier = Modifier
                 .width(320.dp)
                 .height(60.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray)
-        ){
-            Text("Game with: ${game.player1}")
+        ) {
+            val player0 = game.player0
+            val player1 = game.player1
+            if (player0 == mainUser) {
+                Text("Game with: ${game.player1}")
+            }
+            if (player1 == mainUser) {
+                Text("Game with: ${game.player0}")
+            }
         }
     }
 }

@@ -56,10 +56,10 @@ class DataFetcher() {
         }
     }
 
-    suspend fun fetchGames(): List<Game> {
+    suspend fun fetchUserGames(username: String): List<Game> {
         return withContext(IO) {
             val request = Request.Builder()
-                .url("http://69.250.96.168:5555/games")
+                .url("http://69.250.96.168:5555/games?username=${username}")
                 .get()
                 .build()
 

@@ -55,7 +55,8 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
             GameSelectView(
                 gvm.games,
                 setOpp = {gvm.setOpp(it)},
-                addGame = {gvm.addGame()}
+                addGame = {gvm.addGame()},
+                loginVm.mainUser
             )
         }
         composable(Routes.Game3d.route) {

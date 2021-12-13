@@ -23,18 +23,12 @@ class GameSelectViewModel(app:Application): AndroidViewModel(app) {
     var mainUsername by mutableStateOf("")
     var opponent by mutableStateOf("")
 
-    init {
-        viewModelScope.launch {
-            delay(1000)
-            fetchGames()
-        }
-    }
 
     fun addGame() {
         CoroutineScope(IO).launch {
             games = try {
                 DataFetcher().postGame(mainUsername, opponent)
-                DataFetcher().fetchGames()
+                DataFetcher().fetchUserGames(mainUsername)
             } catch (er: Error){
                 listOf()
             }
@@ -47,11 +41,9 @@ class GameSelectViewModel(app:Application): AndroidViewModel(app) {
 
     fun setMainUser(mainUser: String){
         mainUsername = mainUser
-    }
-
-    private suspend fun fetchGames() {
-        games = DataFetcher().fetchGames()
-        Log.i(TAG,"Called Coroutine")
+        viewModelScope.launch {
+            games = DataFetcher().fetchUserGames(mainUsername)
+        }
     }
 
 }
