@@ -16,5 +16,5 @@ interface UserDao {
     fun getName(): String
 
     @Query("SELECT * FROM User LIMIT(1)")
-    fun getUser(): LiveData<User>
+    fun getUser(): User
 }

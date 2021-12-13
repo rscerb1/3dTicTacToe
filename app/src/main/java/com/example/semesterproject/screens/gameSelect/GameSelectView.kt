@@ -56,7 +56,6 @@ fun GameSelectView(
     }
 }
 
-
 @Composable
 fun GameRow(game: Game){
     Row(
@@ -78,12 +77,3 @@ fun GameRow(game: Game){
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun PreGameRow(){
-    val game = remember {
-        Game("a","Bob","a","a","a")
-    }
-    GameRow(game)
-}

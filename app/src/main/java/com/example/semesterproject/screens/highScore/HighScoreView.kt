@@ -10,10 +10,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun HighScoreScreen() {
-    val ScoreList: List<HighScore> = (1..50).map { i ->
-            HighScore(i, "Player $i", i * 2, i + 2)
+    val ScoreList: List<HighScoreViewModel> = (1..50).map { i ->
+            HighScoreViewModel(i, "Player $i", i * 2, i + 2)
     }
     val _ScoreList =  ScoreList.sortedByDescending { it.Wins }
+
     Row (
         modifier = Modifier.fillMaxWidth().padding(5.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
@@ -38,4 +39,18 @@ fun HighScoreScreen() {
 
 }
 
+@Composable
+fun ScoreRow (
+    index:Int,
+    Score: HighScoreViewModel
+){
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(5.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Text(text = "${index+1}")
+        Text(text = "${Score.Name}")
+        Text(text = "${Score.Wins}")
+    }
+}
 

@@ -13,20 +13,24 @@ import com.example.semesterproject.screens.login.AccountView
 import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
+import com.example.semesterproject.screens.login.LoginViewModel
 import com.example.semesterproject.screens.mainMenu.MainMenuView
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
 fun TicTacNavGraph (navController: NavHostController = rememberNavController(), ){
-    val vm: GameSelectViewModel = viewModel()
+    val gvm: GameSelectViewModel = viewModel()
+    val loginVm: LoginViewModel = viewModel()
     NavHost(
         navController = navController,
         startDestination = Routes.Login.route
     )
     {
         composable(Routes.Login.route){
-            AccountView(navController)
+            AccountView(
+                navController
+            )
         }
         composable(Routes.MainMenu.route){
             MainMenuView(navController)
@@ -39,8 +43,8 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
         }
         composable(Routes.GameSelect.route){
             GameSelectView(
-                vm.games,
-                addGame = {vm.addGame(it)}
+                gvm.games,
+                addGame = {gvm.addGame(it)}
             )
         }
         //TODO-Add paths for game modes
