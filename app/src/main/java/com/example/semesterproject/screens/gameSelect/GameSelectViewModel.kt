@@ -18,27 +18,35 @@ import kotlinx.coroutines.launch
 class GameSelectViewModel(app:Application): AndroidViewModel(app) {
 
     // TODO: replace mainPlayer with whichever user is signed in
-    val mainPlayer = "reggie"
 
     var games by mutableStateOf(GameRepo.getGames())
+    var mainUsername by mutableStateOf("")
+    var opponent by mutableStateOf("")
 
     init {
         viewModelScope.launch {
             delay(1000)
-
             fetchGames()
         }
     }
 
-    fun addGame(opponent: String) {
+    fun addGame() {
         CoroutineScope(IO).launch {
             games = try {
-                DataFetcher().postGame(mainPlayer, opponent)
+                DataFetcher().postGame(mainUsername, opponent)
                 DataFetcher().fetchGames()
             } catch (er: Error){
                 listOf()
             }
         }
+    }
+
+    fun setOpp(oppon: String){
+        opponent = oppon
+    }
+
+    fun setMainUser(mainUser: String){
+        mainUsername = mainUser
     }
 
     private suspend fun fetchGames() {

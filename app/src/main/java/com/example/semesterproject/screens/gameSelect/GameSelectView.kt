@@ -22,7 +22,8 @@ import com.example.semesterproject.data.game.Game
 @Composable
 fun GameSelectView(
     games: List<Game>,
-    addGame: (String) -> Unit
+    setOpp: (String) -> Unit,
+    addGame: () -> Unit
 ) {
     val opponent = remember { mutableStateOf(TextFieldValue()) }
     
@@ -43,7 +44,10 @@ fun GameSelectView(
                         placeholder = {Text("Enter Opponent")},
                         modifier = Modifier.width(300.dp)
                     )
-                    Button(onClick = { addGame(opponent.value.text) }) {
+                    Button(onClick = {
+                        setOpp(opponent.value.text)
+                        addGame()
+                    }) {
                         Text(text = "Create Game")
                     }
                 }

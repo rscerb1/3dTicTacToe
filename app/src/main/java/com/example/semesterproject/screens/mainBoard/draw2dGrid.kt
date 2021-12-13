@@ -16,21 +16,6 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.material.Button
 
-//@Composable
-//fun ButtonRow1() {
-//
-//    Row(
-//        modifier = Modifier.padding(20.dp)
-//    ) {
-//        Button(
-//            onClick = {}
-//
-//                }
-//    )
-//}
-
-
-
 @Composable
 fun draw2dGrid(cordList: List<CordPair>) {
 
@@ -137,9 +122,6 @@ fun draw2dGrid(cordList: List<CordPair>) {
         )
 
         for (i in 1..8) {
-
-//            Log.d(" TOP  x-Value ", "$currentX")
-//            Log.d(" TOP  y-Value ", "$currentY")
 
             if (i % 3 == 0) {
                 currentX -= 600f

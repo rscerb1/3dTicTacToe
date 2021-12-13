@@ -77,11 +77,3 @@ fun load2dBoard() {
         }
     }
 }
-
-
-//    draw2dGrid()
-//
-//
-//    draw2dO()
-//    draw2dX()
-//    MakeMove()

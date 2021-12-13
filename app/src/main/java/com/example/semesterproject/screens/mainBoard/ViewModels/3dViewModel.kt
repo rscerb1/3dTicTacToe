@@ -3,11 +3,11 @@ package com.example.semesterproject.screens.mainBoard.ViewModels
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import com.example.semesterproject.screens.mainBoard.CordPair
-import com.example.semesterproject.screens.mainBoard.cordRepo
+import com.example.semesterproject.screens.mainBoard.CordRepo
 
 class boardViewModel: ViewModel() {
 
-    var cordPairs by mutableStateOf(cordRepo.getcordPairs())
+    var cordPairs by mutableStateOf(CordRepo.getCordPairs())
     //val _cordList: State<List> = mutableListOf()
 
     val cordList = mutableListOf<CordPair>()
