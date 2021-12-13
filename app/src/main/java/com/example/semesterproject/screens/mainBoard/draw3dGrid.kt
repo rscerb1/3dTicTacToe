@@ -1,15 +1,20 @@
 package com.example.semesterproject.screens.mainBoard
 
 import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -350,40 +355,52 @@ fun draw3dGrid(navController: NavHostController) {
     }
 
     Column(
-
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
 
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            //modifier = Modifier.fillMaxWidth().fillMaxHeight(),
             horizontalArrangement = Arrangement.Center
         ) {
             Button(
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dTop.route)}
             ) {
-            Text("Top Grid")
+            Text("")
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+           // modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+
         ) {
             Button(
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                border = BorderStroke(0.dp, Color.Transparent),
+                modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dMiddle.route)}
             ) {
-                Text("Middle Grid")
+                Text("")
+
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+           // modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
         ) {
             Button(
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                modifier = Modifier.width(320.dp).height(150.dp).padding(15.dp),
                 onClick = {
                     navController.navigate(Routes.Board2dBottom.route)}
             ) {
-                Text("Bottom Grid")
+                Text("")
             }
         }
     }
