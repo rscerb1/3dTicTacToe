@@ -8,6 +8,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Surface
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
+import com.example.semesterproject.screens.mainBoard.MakeMove
+import com.example.semesterproject.screens.mainBoard.draw3dGrid
+import com.example.semesterproject.screens.mainBoard.loadBoard
 
 class MainActivity : AppCompatActivity() {
     @ExperimentalComposeUiApi
@@ -17,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         setContent(){
             Surface{
                 MainScreen()
+
+
             }
         }
     }
