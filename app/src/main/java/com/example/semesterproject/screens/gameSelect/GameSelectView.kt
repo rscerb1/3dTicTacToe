@@ -16,13 +16,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.semesterproject.data.game.Game
+import com.example.semesterproject.navigation.Routes
 
 @ExperimentalFoundationApi
 @Composable
 fun GameSelectView(
+    nav: NavHostController = rememberNavController(),
     games: List<Game>,
-    addGame: (String) -> Unit
+    setOpp: (String) -> Unit,
+    addGame: () -> Unit,
+    mainUser: String
 ) {
     val opponent = remember { mutableStateOf(TextFieldValue()) }
     
@@ -43,36 +49,48 @@ fun GameSelectView(
                         placeholder = {Text("Enter Opponent")},
                         modifier = Modifier.width(300.dp)
                     )
-                    Button(onClick = { addGame(opponent.value.text) }) {
+                    Button(onClick = {
+                        setOpp(opponent.value.text)
+                        addGame()
+                    }) {
                         Text(text = "Create Game")
                     }
                 }
             }
 
             items(games) { game ->
-                GameRow(game)
+                GameRow(game, mainUser, nav)
             }
         }
     }
 }
 
 @Composable
-fun GameRow(game: Game){
+fun GameRow(game: Game, mainUser: String,nav: NavHostController){
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-    ){
+    ) {
         Button(
-            onClick = {},
+            onClick = {
+                nav.navigate(Routes.Board3d.route)
+            },
             modifier = Modifier
                 .width(320.dp)
                 .height(60.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray)
-        ){
-            Text("Game with: ${game.player1}")
+        ) {
+            val player0 = game.player0
+            val player1 = game.player1
+            if (player0 == mainUser) {
+                Text("Game with: ${game.player1}")
+            }
+            if (player1 == mainUser) {
+                Text("Game with: ${game.player0}")
+            }
         }
     }
 }

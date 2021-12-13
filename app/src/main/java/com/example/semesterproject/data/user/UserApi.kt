@@ -16,7 +16,7 @@ class UserApi(
 
     override suspend fun getUser(): User {
         if(database.getUser() == null){
-            val user = userFetcher.fetchUser()
+            val user = userFetcher.fetchUser("")
         }
         return database.getUser()
     }

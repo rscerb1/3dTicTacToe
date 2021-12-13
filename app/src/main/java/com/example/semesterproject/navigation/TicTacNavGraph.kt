@@ -26,8 +26,10 @@ import com.example.semesterproject.screens.mainMenu.MainMenuView
 @ExperimentalFoundationApi
 @Composable
 fun TicTacNavGraph (navController: NavHostController = rememberNavController(), ){
+
     val gvm: GameSelectViewModel = viewModel()
     val loginVm: LoginViewModel = viewModel()
+
     NavHost(
         navController = navController,
         startDestination = Routes.Login.route
@@ -35,7 +37,9 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
     {
         composable(Routes.Login.route){
             AccountView(
-                navController
+                navController,
+                signIn = {loginVm.signIn(it)},
+                loginVm
             )
         }
         composable(Routes.MainMenu.route){
@@ -48,9 +52,13 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
             SettingView()
         }
         composable(Routes.GameSelect.route){
+            gvm.setMainUser(loginVm.mainUser)
             GameSelectView(
+                navController,
                 gvm.games,
-                addGame = {gvm.addGame(it)}
+                setOpp = {gvm.setOpp(it)},
+                addGame = {gvm.addGame()},
+                loginVm.mainUser
             )
         }
         composable(Routes.Board3d.route) {

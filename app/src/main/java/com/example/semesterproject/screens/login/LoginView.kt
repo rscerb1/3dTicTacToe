@@ -20,10 +20,10 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun AccountView(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    signIn: (String) -> Unit,
+    vm: LoginViewModel
 ) {
-
-    val vm: LoginViewModel = viewModel()
 
     Column(
         Modifier
@@ -63,6 +63,7 @@ fun AccountView(
 
                 Button(
                     onClick = {
+                        signIn(username.value.text)
                         navController.navigate(Routes.MainMenu.route)
                               },
                     modifier = Modifier.padding(10.dp)
@@ -116,24 +117,11 @@ fun AccountView(
                             pass.value.text == passConfirm.value.text
                             && pass.value.text != ""
                         ) {
-                            if(vm.addUser(username.value.text, passConfirm.value.text)) {
-                                username.value = TextFieldValue("")
-                                pass.value = TextFieldValue("")
-                                passConfirm.value = TextFieldValue("")
-                                message.value = "Account Created! You can now login and start playing!"
-                                openDialog.value = true
-                            }
-                            else{
-                                pass.value = TextFieldValue("")
-                                passConfirm.value = TextFieldValue("")
-                                message.value = "This username is invalid or already in use."
-                                openDialog.value = true
-                            }
-                        }
-                        else{
+                            vm.addUser(username.value.text, passConfirm.value.text)
+                            username.value = TextFieldValue("")
                             pass.value = TextFieldValue("")
                             passConfirm.value = TextFieldValue("")
-                            message.value = "Errors in one of the fields."
+                            message.value = "Account Created! You can now login and start playing!"
                             openDialog.value = true
                         }
                     },
