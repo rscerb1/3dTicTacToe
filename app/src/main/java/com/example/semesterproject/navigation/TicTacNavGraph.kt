@@ -14,7 +14,7 @@ import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
 import com.example.semesterproject.screens.login.LoginViewModel
-import com.example.semesterproject.screens.mainBoard.loadBoard
+import com.example.semesterproject.screens.mainBoard.load2dBoard
 import com.example.semesterproject.screens.mainMenu.MainMenuView
 
 @ExperimentalComposeUiApi

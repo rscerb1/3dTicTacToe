@@ -32,7 +32,11 @@ import androidx.compose.material.Button
 
 
 @Composable
-fun draw2dGrid() {
+fun draw2dGrid(cordList: List<CordPair>) {
+
+    var cordpair = CordPair(0f, 0f)
+    var cordList = listOf(cordpair)
+
     Canvas(modifier = Modifier.fillMaxSize()) {
         val canvasSize = size
         val canvasWidth = size.width
@@ -119,8 +123,6 @@ fun draw2dGrid() {
         var currentX = startingX
         var currentY = startingY
 
-        var cordpair = CordPair(0f, 0f)
-        var cordList = listOf(cordpair)
 
         cordpair.xcord = currentX
         cordpair.ycord = currentY
@@ -155,9 +157,9 @@ fun draw2dGrid() {
             cordpair.ycord = currentY
             cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
         }
-        var finalcordList = cordList.drop(1)
-        Log.d("Tag", finalcordList.toString())
-        Log.d("# of ele in cordpair",  finalcordList.size.toString())
+        cordList = cordList.drop(1)
+        Log.d("Tag", cordList.toString())
+        Log.d("# of ele in cordpair",  cordList.size.toString())
 
 
     }
@@ -165,7 +167,7 @@ fun draw2dGrid() {
 
 // shifts right by 300 pixels and down by 300 pixels
 @Composable
-fun draw2dO() {
+fun draw2dO(cordPair: CordPair) {
     Canvas(modifier = Modifier.fillMaxSize()) {
 
         val canvasSize = size
@@ -176,7 +178,7 @@ fun draw2dO() {
 
         drawCircle(
             color = Color.Black,
-            center = Offset(startingX, startingY),
+            center = Offset(cordPair.xcord, cordPair.ycord),
             radius = 90f,
             style = Stroke(width = size.width * 0.01f)
         )
@@ -186,7 +188,7 @@ fun draw2dO() {
 
 // Will use selectedCord to draw 2 lines from
 @Composable
-fun draw2dX() {
+fun draw2dX(cordPair: CordPair) {
     Canvas(modifier = Modifier.fillMaxSize()) {
 
         val canvasSize = size
@@ -201,8 +203,8 @@ fun draw2dX() {
         // end: referenceX-90f, referenceY-90f
         drawLine(
             color = Color.Black,
-            start = Offset(x = startingX + 90f, startingY + 90f),
-            end = Offset(x = startingX - 90f, startingY - 90f),
+            start = Offset(x = cordPair.xcord + 90f, cordPair.ycord + 90f),
+            end = Offset(x = cordPair.xcord - 90f, cordPair.ycord - 90f),
             strokeWidth = 10F
         )
 
@@ -212,8 +214,8 @@ fun draw2dX() {
         // End: referenceX - 90, referenceY+90
         drawLine(
             color = Color.Black,
-            start = Offset(x = startingX + 90f, startingY - 90f),
-            end = Offset(x = startingX - 90f, startingY + 90f),
+            start = Offset(x = cordPair.xcord + 90f, cordPair.ycord - 90f),
+            end = Offset(x = cordPair.xcord - 90f, cordPair.ycord + 90f),
             strokeWidth = 10F
         )
     }

@@ -40,8 +40,8 @@ fun draw3dX(cordPair: CordPair) {
         // end: x-30f, y-30f
         drawLine(
             color = Color.Black,
-            start = Offset(x = 345f, y = 511f),
-            end = Offset(x = 285f, y = 451f),
+            start = Offset(cordPair.xcord + 30f, cordPair.ycord +30f),
+            end = Offset(cordPair.xcord - 30f, cordPair.ycord - 30f),
             strokeWidth = 10F
         )
 
@@ -51,8 +51,8 @@ fun draw3dX(cordPair: CordPair) {
         // End: x+30, y+30
         drawLine(
             color = Color.Black,
-            start = Offset(x =345f , y = 451f),
-            end = Offset(x = 285f, y = 511f),
+            start = Offset(cordPair.xcord + 30 , cordPair.ycord - 30),
+            end = Offset(cordPair.xcord - 30, cordPair.ycord + 30),
             strokeWidth = 10F
         )
     }
@@ -259,6 +259,7 @@ fun draw3dGrid(cordList: List<CordPair>) {
                 color = Color.Black,
                 center = Offset(x = currentX, y = currentY),
                 radius = 10f
+
             )
             cordpair.xcord = currentX
             cordpair.ycord = currentY
@@ -338,7 +339,7 @@ fun draw3dGrid(cordList: List<CordPair>) {
         cordList = cordList.drop(1)
 
         //Log.d("# elements in cordpair", finalCordList.size.toString())
-//        Log.d("list is", finalCordList.toString())
+        Log.d("list is", cordList.toString())
 
     }
 
