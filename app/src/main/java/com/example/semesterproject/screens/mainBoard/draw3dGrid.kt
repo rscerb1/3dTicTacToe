@@ -1,37 +1,26 @@
 package com.example.semesterproject.screens.mainBoard
 
-import android.graphics.Color.red
-import android.opengl.ETC1.getWidth
 import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.drawscope.rotate
-import androidx.compose.ui.graphics.drawscope.translate
-import androidx.compose.ui.graphics.drawscope.withTransform
-import androidx.compose.ui.graphics.vector.addPathNodes
-import androidx.compose.ui.unit.dp
-import org.w3c.dom.Text
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.semesterproject.screens.mainBoard.ViewModels.boardViewModel
 
 
-// Will use selectedCord to draw circle
+// Will use selectedCord to draw circle ex values 315,481
 @Composable
-fun drawO() {
+fun draw3dO(cordPair: CordPair) {
+
+    //val vm: boardViewModel = viewmodel()
     Canvas(modifier = Modifier.fillMaxSize()) {
         drawCircle(
             color = Color.Black,
-            center = Offset(315f, 481f),
+            center = Offset(cordPair.xcord, cordPair.ycord),
             radius = 30f,
             style = Stroke(width = size.width * 0.008f)
         )
@@ -41,7 +30,8 @@ fun drawO() {
 
 // Will use selectedCord to draw 2 lines from
 @Composable
-fun drawX() {
+fun draw3dX(cordPair: CordPair) {
+
     Canvas(modifier = Modifier.fillMaxSize()) {
 
         // If the reference point is TOP:[1,1] (190,381) finalcordList(1)
@@ -70,14 +60,19 @@ fun drawX() {
 
 
 @Composable
-fun draw3dGrid() {
+fun draw3dGrid(cordList: List<CordPair>) {
+
+    var cordpair = CordPair(0f, 0f)
+    var cordList = listOf(cordpair)
+//    var finalCordList = listOf(cordpair)
+
     Canvas(modifier = Modifier.fillMaxSize()) {
         val canvasWidth = size.width
         val canvasHeight = size.height
         val canvasSize = size
 
-        Log.d("canvas Width =  ", canvasWidth.toString())
-        Log.d("canvas height = ", canvasHeight.toString())
+//        Log.d("canvas Width =  ", canvasWidth.toString())
+//        Log.d("canvas height = ", canvasHeight.toString())
 
         // Middle Grid
         drawLine(
@@ -240,27 +235,24 @@ fun draw3dGrid() {
             radius = 10f
         )
 
-        var cordpair = CordPair(0f,0f)
-        var cordList = listOf(cordpair)
+
 
         cordpair.xcord = currentX
         cordpair.ycord = currentY
         cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
 
-        Log.d("Tag", cordList.toString())
-        Log.d("# elements in cordpair", cordList.size.toString())
+//        Log.d("Tag", cordList.toString())
+//        Log.d("# elements in cordpair", cordList.size.toString())
 
         for (i in 1..8) {
 
-            Log.d(" TOP  x-Value ", "$currentX")
-            Log.d(" TOP  y-Value ", "$currentY")
+//            Log.d(" TOP  x-Value ", "$currentX")
+//            Log.d(" TOP  y-Value ", "$currentY")
 
             if (i % 3 == 0) {
                 currentX -= 225f
                 currentY += 100f
-            }
-
-            else {
+            } else {
                 currentX += 175f
             }
             drawCircle(
@@ -270,7 +262,7 @@ fun draw3dGrid() {
             )
             cordpair.xcord = currentX
             cordpair.ycord = currentY
-            cordList = cordList + listOf(CordPair(cordpair.xcord,cordpair.ycord))
+            cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
         }
 
         // Middle Grid
@@ -285,11 +277,11 @@ fun draw3dGrid() {
 
         cordpair.xcord = currentX
         cordpair.ycord = currentY
-        cordList = cordList + listOf(CordPair(cordpair.xcord,cordpair.ycord))
+        cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
 
         for (i in 1..8) {
-            Log.d(" MIDDLE   x-Value ", "$currentX")
-            Log.d(" MIDDLE   y-Value ", "$currentY")
+//            Log.d(" MIDDLE   x-Value ", "$currentX")
+//            Log.d(" MIDDLE   y-Value ", "$currentY")
             if (i % 3 == 0) {
                 currentX -= 225f
                 currentY += 100f
@@ -304,7 +296,7 @@ fun draw3dGrid() {
 
             cordpair.xcord = currentX
             cordpair.ycord = currentY
-            cordList = cordList + listOf(CordPair(cordpair.xcord,cordpair.ycord))
+            cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
         }
 
         // Bottom Grid
@@ -318,19 +310,17 @@ fun draw3dGrid() {
         )
         cordpair.xcord = currentX
         cordpair.ycord = currentY
-        cordList = cordList + listOf(CordPair(cordpair.xcord,cordpair.ycord))
+        cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
 
         for (i in 1..8) {
 
-            Log.d(" Bottom   x-Value ", "$currentX")
-            Log.d(" Bottom   y-Value ", "$currentY")
+//            Log.d(" Bottom   x-Value ", "$currentX")
+//            Log.d(" Bottom   y-Value ", "$currentY")
 
             if (i % 3 == 0) {
                 currentX -= 225f
                 currentY += 100f
-            }
-
-            else {
+            } else {
                 currentX += 175f
             }
 
@@ -342,14 +332,17 @@ fun draw3dGrid() {
 
             cordpair.xcord = currentX
             cordpair.ycord = currentY
-            cordList = cordList + listOf(CordPair(cordpair.xcord,cordpair.ycord))
+            cordList = cordList + listOf(CordPair(cordpair.xcord, cordpair.ycord))
         }
 
-        var finalcordList = cordList.drop(1)
+        cordList = cordList.drop(1)
 
-        Log.d("Tag", finalcordList.toString())
-        Log.d("# of elements in cordpair",  finalcordList.size.toString())
-        //Log.d("canvas width is: ", Canvas.getWidth().toString())
+        //Log.d("# elements in cordpair", finalCordList.size.toString())
+//        Log.d("list is", finalCordList.toString())
 
     }
+
+
+
+//    Log.d("# ele in finalcordpair", finalCordList.size.toString())
 }

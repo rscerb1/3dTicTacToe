@@ -14,6 +14,7 @@ import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
 import com.example.semesterproject.screens.login.LoginViewModel
+import com.example.semesterproject.screens.mainBoard.loadBoard
 import com.example.semesterproject.screens.mainMenu.MainMenuView
 
 @ExperimentalComposeUiApi
@@ -46,6 +47,9 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
                 gvm.games,
                 addGame = {gvm.addGame(it)}
             )
+        }
+        composable(Routes.MainBoard.route) {
+            //loadBoard()
         }
         //TODO-Add paths for game modes
     }
