@@ -25,6 +25,8 @@ data class newGameData(
 
 class DataFetcher() {
 
+
+
     private val client = OkHttpClient()
 
     fun postGame(player0: String, player1: String) {
@@ -39,21 +41,25 @@ class DataFetcher() {
         Log.i("POST Response", client.newCall(request).execute().toString())
     }
 
-
-    fun fetchGames(): List<Game> {
-        val request = Request.Builder()
-                .url("http://69.250.96.168:5555/games")
-                .get()
-                .build()
-        val response = client.newCall(request).execute()
-        val json = response.body?.string()
-        return if (json != null) {
-            val gson = Gson()
-            val listTypeToken = object : TypeToken<List<Game>>() {}
-            val listType = listTypeToken.type
-            Log.i(ContentValues.TAG,"Loaded Data from API")
-            gson.fromJson(json, listType)
-        } else { listOf() }
+    suspend fun fetchGames(): List<Game> {
+        return withContext(Dispatchers.IO) {
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("http://69.250.96.168:5555/games%22")
+                    .get()
+                    .build()
+                    val response = client.newCall(request).execute()
+            val json = response.body?.string()
+            if (json != null) {
+                val gson = Gson()
+                val listTypeToken = object : TypeToken<List<Game>>() {}
+                val listType = listTypeToken.type
+                Log.i(ContentValues.TAG, "Loaded Data from API")
+                gson.fromJson(json, listType)
+            } else {
+                listOf()
+            }
+        }
     }
 
 
