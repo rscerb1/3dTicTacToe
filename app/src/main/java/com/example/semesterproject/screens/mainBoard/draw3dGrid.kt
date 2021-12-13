@@ -2,13 +2,20 @@ package com.example.semesterproject.screens.mainBoard
 
 import android.util.Log
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.semesterproject.navigation.Routes
 import com.example.semesterproject.screens.mainBoard.ViewModels.boardViewModel
 
 
@@ -60,7 +67,8 @@ fun draw3dX(cordPair: CordPair) {
 
 
 @Composable
-fun draw3dGrid(cordList: List<CordPair>) {
+fun draw3dGrid(cordList: List<CordPair>,navController: NavHostController = rememberNavController()) {
+
 
     var cordpair = CordPair(0f, 0f)
     var cordList = listOf(cordpair)
@@ -343,7 +351,22 @@ fun draw3dGrid(cordList: List<CordPair>) {
 
     }
 
+    Column(
+        modifier = Modifier.fillMaxWidth()
 
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Routes.Board2dTop.route)}
+            ) {
+
+            }
+        }
+    }
 
 //    Log.d("# ele in finalcordpair", finalCordList.size.toString())
 }
+

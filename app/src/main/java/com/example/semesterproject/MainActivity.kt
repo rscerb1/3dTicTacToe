@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent(){
             Surface{
-                load2dBoard()
-                MakeMove()
+                load3dBoard()
 
             }
         }

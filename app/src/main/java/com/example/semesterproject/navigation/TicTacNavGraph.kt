@@ -3,6 +3,7 @@ package com.example.semesterproject.navigation
 import com.example.semesterproject.screens.highScore.HighScoreScreen
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ExperimentalComposeApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -14,9 +15,11 @@ import com.example.semesterproject.screens.SettingView
 import com.example.semesterproject.screens.gameSelect.GameSelectView
 import com.example.semesterproject.screens.gameSelect.GameSelectViewModel
 import com.example.semesterproject.screens.login.LoginViewModel
-import com.example.semesterproject.screens.mainBoard.load2dBoard
+import com.example.semesterproject.screens.mainBoard.load2dBoardTop
+import com.example.semesterproject.screens.mainBoard.load3dBoard
 import com.example.semesterproject.screens.mainMenu.MainMenuView
 
+@ExperimentalComposeApi
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
@@ -48,9 +51,18 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
                 addGame = {gvm.addGame(it)}
             )
         }
-        composable(Routes.MainBoard.route) {
-            //loadBoard()
+        composable(Routes.Board3d.route) {
+            load3dBoard()
         }
+        composable(Routes.Board2dTop.route) {
+            load2dBoardTop()
+        }
+//        composable(Routes.Board2dMiddle.route) {
+//            load2dBoardMiddle()
+//        }
+//        composable(Routes.Board2dTop.route) {
+//            load2dBoardBottom()
+//        }
         //TODO-Add paths for game modes
     }
 }
