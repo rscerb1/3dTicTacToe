@@ -4,9 +4,11 @@ import com.example.semesterproject.navigation.TicTacNavGraph
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ExperimentalComposeApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.compose.rememberNavController
 
+@ExperimentalComposeApi
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable

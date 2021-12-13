@@ -67,7 +67,7 @@ fun draw3dX(cordPair: CordPair) {
 
 
 @Composable
-fun draw3dGrid(cordList: List<CordPair>,navController: NavHostController = rememberNavController()) {
+fun draw3dGrid(navController: NavHostController) {
 
 
     var cordpair = CordPair(0f, 0f)

@@ -25,7 +25,7 @@ fun MainMenuView (navController: NavHostController = rememberNavController()){
         ) {
             Button(
                 modifier = Modifier.padding(16.dp).width(120.dp).height(60.dp),
-                onClick = { navController.navigate(Routes.GameSelect.route) })
+                onClick = { navController.navigate(Routes.Board3d.route) })
             {
                 Text(text = "Play")
             }

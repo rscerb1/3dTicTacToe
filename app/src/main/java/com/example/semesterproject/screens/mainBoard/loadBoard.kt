@@ -23,12 +23,12 @@ var firstBoardState =
 
 @ExperimentalComposeApi
 @Composable
-fun load3dBoard(navController: NavHostController = rememberNavController()) {
+fun load3dBoard(navController: NavHostController) {
 
     var cordpair = CordPair(0f, 0f)
     var cordList = listOf(cordpair)
 
-    draw3dGrid(cordList)
+    draw3dGrid(navController)
 
     Log.d("LIST IS", cordList.toString())
 

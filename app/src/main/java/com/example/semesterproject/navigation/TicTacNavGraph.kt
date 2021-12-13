@@ -52,7 +52,7 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
             )
         }
         composable(Routes.Board3d.route) {
-            load3dBoard()
+            load3dBoard(navController)
         }
         composable(Routes.Board2dTop.route) {
             load2dBoardTop()
@@ -63,6 +63,7 @@ fun TicTacNavGraph (navController: NavHostController = rememberNavController(), 
 //        composable(Routes.Board2dTop.route) {
 //            load2dBoardBottom()
 //        }
+
         //TODO-Add paths for game modes
     }
 }
