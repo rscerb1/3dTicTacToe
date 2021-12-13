@@ -2,11 +2,9 @@ package com.example.semesterproject.screens.mainBoard
 
 import android.util.Log
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -352,17 +350,40 @@ fun draw3dGrid(navController: NavHostController) {
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth()
+
 
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
         ) {
             Button(
                 onClick = {
                     navController.navigate(Routes.Board2dTop.route)}
             ) {
-
+            Text("Top Grid")
+            }
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Routes.Board2dMiddle.route)}
+            ) {
+                Text("Middle Grid")
+            }
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Routes.Board2dBottom.route)}
+            ) {
+                Text("Bottom Grid")
             }
         }
     }
