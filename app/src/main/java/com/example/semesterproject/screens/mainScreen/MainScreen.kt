@@ -18,8 +18,8 @@ fun MainScreen (){
         topBar = {
             // Text(text = "3D Tic Tac Toe")
             //TODO - Fix Title Bar
-        }
-            ){
+        },
+    ){
         TicTacNavGraph(nav)
     }
 }
